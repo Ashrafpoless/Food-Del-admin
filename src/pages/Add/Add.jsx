@@ -39,7 +39,7 @@ const Add = () => {
       formData.append('category', data.category);
       formData.append('price',Number(data.price));
       // add product to the database
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/food/add`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/food/add`, formData);
       if(response.data.success){
         toast.success(response.data.message);
         setData({

@@ -14,7 +14,7 @@ const List = () => {
 
   // fetch list data function
   const fetchList = async () =>{
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/food/list`);
+    const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/api/food/list`);
     console.log(res.data)
     if (res.data.success){
       setList(res.data.data);
@@ -26,7 +26,7 @@ const List = () => {
 
   // delete food item function
   const deleteFoodItem = async (foodId) => {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/food/remove/`, {id:foodId});
+      const res = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/food/remove/`, {id:foodId});
       await fetchList();
       if(res.data.success){
         toast.success(res.data.message);
@@ -54,7 +54,7 @@ const List = () => {
         {list.map((item, index) =>{
           return (
             <div key={index} className="list-table-format">
-              <img src={`${import.meta.env.VITE_API_URL}/images/`+item.image} alt={item.name} />
+              <img src={`${import.meta.env.VITE_SERVER_URL}/images/`+item.image} alt={item.name} />
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
