@@ -16,7 +16,6 @@ const List = () => {
     const res = await axios.get(
       `${import.meta.env.VITE_SERVER_URL}/api/food/list`
     );
-    console.log(res.data);
     if (res.data.success) {
       setList(res.data.data);
     } else {
